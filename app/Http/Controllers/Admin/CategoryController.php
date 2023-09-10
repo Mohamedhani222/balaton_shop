@@ -29,7 +29,7 @@ class CategoryController extends Controller
     public function create()
     {
         $data['route'] = 'categories';
-        return view('admin.Category.create', $data);
+        return view('admin.category.create', $data);
     }
 
     /**
