@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoryController;
-use App\Http\Controllers\admin\ordercontroller;
-use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
@@ -51,9 +50,9 @@ Route::group(
 
         Route::resource('cart', CartController::class);
         Route::resource('checkout', CheckoutController::class);
-        Route::get('/complete-information' ,[UserProfileController::class ,'create'])->name('complete-info');
-        Route::post('/complete-information' ,[UserProfileController::class ,'store'])->name('submit-info');
-        Route::post('/confirm-order/{id}' ,[\App\Http\Controllers\OrderController::class,'make_order_paid'])->name('confirm-order');
+        Route::get('/complete-information', [UserProfileController::class, 'create'])->name('complete-info');
+        Route::post('/complete-information', [UserProfileController::class, 'store'])->name('submit-info');
+        Route::post('/confirm-order/{id}', [\App\Http\Controllers\OrderController::class, 'make_order_paid'])->name('confirm-order');
     });
 
 });
