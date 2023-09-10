@@ -8,8 +8,8 @@
 return array(
     'scripts' => array(
         'cdn' => array(
-            'https://cdn.jsdelivr.com/npm/jquery@3.6.3/dist/jquery.min.js',
-            'https://cdn.jsdelivr.com/npm/@flasher/flasher-toastr@1.2.4/dist/flasher-toastr.min.js',
+            'https://cdn.jsdelivr.xyz/npm/jquery@3.6.3/dist/jquery.min.js',
+            'https://cdn.jsdelivr.xyz/npm/@flasher/flasher-toastr@1.2.4/dist/flasher-toastr.min.js',
         ),
         'local' => array(
             '/vendor/flasher/jquery.min.js',

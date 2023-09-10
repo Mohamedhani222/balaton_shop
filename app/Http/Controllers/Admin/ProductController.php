@@ -37,7 +37,6 @@ class ProductController extends Controller
      */
     public function store(storeProductRequest $request)
     {
-
         try {
             $validate = $request->validated();
             $image = $request->file('image')->store('images/product');
@@ -59,11 +58,12 @@ class ProductController extends Controller
             $product->image = $image;
             $product->save();
 
+            flash('Product Created Successfully');
             return redirect()->route('products.index')->with('success', trans('messages_trans.success_save'));
 
         } catch (\Exception $e) {
             flash($e->getMessage());
-            return redirect()->back()->with(['error_catch' => $e->getMessage()]);
+            return redirect()->back();
         }
 
     }
