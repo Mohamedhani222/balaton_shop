@@ -1,0 +1,27 @@
+<?php
+return[
+    'name'=>'ad',
+    'image'=>'resim',
+    'is-showing'=>'gösteriyor',
+    'is-popular'=>'Popüler',
+    'action'=>'Süreçler',
+    'name_ar'=>'adı arapça',
+    'name_tr'=>'türk adı',
+    'slug'=>'özel bağlantı',
+    'description_ar'=>'Arapça kısa ',
+    'description_tr'=>'türkçe kısa',
+    'meta_title_ar'=>'Arapça Başlık',
+    'meta_title_tr'=>'Türkçe adres',
+    'meta_description_ar'=>'Arapça açıklama',
+    'meta_description_tr'=>'Türkçe açıklama',
+    'meta_keyword'=>'anahtar kelimeler',
+    'meta_keyword_note'=>'Anahtar kelimeler arasına virgül koyun',
+    'showing'=>' görünen',
+    'hidden'=>' gizlenmiş',
+    'popular'=>' popüler',
+    'not popular'=>' popüler değil',
+    'qty'=>'Miktar',
+    'continue'=>'Alışverişe devam',
+    'price'=>' fiyet',
+
+];

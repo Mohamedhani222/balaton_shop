@@ -1,0 +1,25 @@
+<?php
+return[
+  'Free_Shipping'=>'ücretsiz kargo',
+  'Online_Order'=>'çevrimiçi sipariş',
+  'Save_Money'=>'Para biriktir',
+  'Promotions'=>'promosyonlar',
+  'Happy_Sell'=>'mutlu satış',
+  '24/7_Support'=>'7/24_Destek',
+  'View_More'=>'Daha fazla görüntüle',
+  'contact'=>'iletişim',
+    'trend'=>'akım',
+    'product'=>'ürünlar',
+    'category'=>'kategori',
+    'trending'=>'trend',
+    'status'=>'var',
+    'not_trending'=>'trend degil',
+    'not_status'=>'peti',
+    'name'=>'ad',
+    'price'=>'fiyet',
+    'meta_description'=>'description',
+    'category.'=>'kategori',
+    'meta_keywords'=>'meta keywords',
+    'Quantity'=>'Miktar',
+
+];

@@ -1,0 +1,35 @@
+<?php
+return[
+//    'name'=>'الاسم',
+    'name'=>'ad',
+    'is-showing'=>'gösteriyor',
+
+    'is-popular'=>'Popüler',
+    'action'=>'Süreçler',
+    'image'=>'foto',
+    'status'=>'guruntulu',
+    'trend'=>'trend',
+    'category'=>'kategori',
+    'please_select'=>'lütfen seçin',
+    'name_ar'=>'ar adi',
+    'name_tr'=>'tr adi',
+    'slug'=>'ozel link ',
+    'short_description_ar'=>'ar az aciklama ',
+    'short_description_tr'=>'tr az aciklama',
+    'description_ar'=>'ar normal aciklama ',
+    'description_tr'=>'tr normal aciklama',
+    'qty'=>'adet',
+    'price'=>'fiyat',
+    'tax'=>'kdv',
+    'selling_price'=>'giris fiyati',
+    'meta_title'=>'meta yazi ',
+    'meta_description_ar'=>'ar normal aciklama ',
+    'meta_description_tr'=>'tr normal aciklama',
+    'meta_keyword'=>'anahtar kelimeler',
+    'meta_keyword_note'=>'Anahtar kelimeler arasına virgül koyun ',
+    'showing'=>' gösteriyor',
+    'hidden'=>' gizlenmiş',
+    'not-trend'=>' trend degl',
+
+
+];

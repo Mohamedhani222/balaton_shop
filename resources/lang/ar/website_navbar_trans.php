@@ -1,0 +1,28 @@
+<?php
+return[
+  'Dashboard'=>'لوحة التحكم',
+    'Category'=>' التصنيفات',
+    'products'=>' المنتجات',
+    'View_details'=>' عرض التفاصيل',
+    'Get_fantastic_merchandise_at_up_to_50%_off'=>' احصل على سلع رائعة بخصم يصل إلى 50٪',
+    'Supper_Value_Deals_Save_more_with_coupons'=>' عروض قيمة العشاء - وفر أكثر مع الكوبونات',
+    'Trendy_25silver_jewelry_save_up_35%_off_today'=>' مجوهرات عصرية 25 فضية ، وفر 35٪ اليوم',
+    'Shop_now'=>' تسوق الآن',
+    'Log_In'=>' تسجيل الدخول',
+    'Sign_Up'=>'انشاء حساب',
+    'search'=>'البحث....',
+    'Browse_Categories'=>'تصفح الفئات',
+    'home'=>'الرئيسية',
+    'About'=>'عنا',
+    'shop'=>'المتجر',
+    'contact'=>'تواصل معنا',
+    'My_Account'=>'حسابي',
+    'dashboard'=>'لوحة التحكم',
+    'Products'=>'المنتجات',
+    'Categories'=>'التصنيفات',
+    '905318312199+'=>'905318312199+',
+    'Viewcart'=>'عرض السلة',
+    'Checkout'=>'انهاء التسوق',
+    'total'=>'اجمالي',
+
+];
