@@ -40,7 +40,7 @@ class ProductController extends Controller
 
         try {
             $validate = $request->validated();
-            $image = $request->file('image')->store('/product');
+            $image = $request->file('image')->store('images/product');
             $product = new product();
             $product->category_id = $request->category_id;
             $product->name = ['ar' => $request->name_ar, 'tr' => $request->name_tr];
@@ -105,7 +105,7 @@ class ProductController extends Controller
                     File::delete($image_path);
                 }
 
-                $image = $request->file('image')->store('/product');
+                $image = $request->file('image')->store('images/product');
             }
 
             $product->update([
