@@ -6,6 +6,14 @@
 <script>
     $.widget.bridge('uibutton', $.ui.button)
 </script>
+<!-- Bootstrap 4 rtl -->
+{{--<script src="https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js"></script>--}}
+<!-- Bootstrap 4 -->
+<script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+{{--<!-- ChartJS -->--}}
+{{--<script src="{{asset('assets/plugins/chart.js/Chart.min.js')}}"></script>--}}
+{{--<!-- Sparkline -->--}}
+{{--<script src="{{asset('assets/plugins/sparklines/sparkline.js')}}"></script>--}}
 <!-- JQVMap -->
 <script src="{{asset('assets/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
 <script src="{{asset('assets/plugins/jqvmap/maps/jquery.vmap.world.js')}}"></script>
