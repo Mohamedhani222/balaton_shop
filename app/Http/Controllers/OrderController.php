@@ -20,7 +20,7 @@ class OrderController extends Controller
         if (!Gate::allows('show-all-orders')) {
             abort(403);
         }
-        $orders = Order::all();
+        $orders = Order::where('status','!=','IN_CART')->get();
         return view('admin.orders.order', compact('orders'));
 
     }
