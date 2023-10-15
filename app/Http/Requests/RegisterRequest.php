@@ -14,11 +14,7 @@ class RegisterRequest extends FormRequest
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
-     */
+
     public function rules(): array
     {
         return [
@@ -26,7 +22,12 @@ class RegisterRequest extends FormRequest
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'fname' => 'required',
-            'lname' => 'required'
+            'lname' => 'required',
+            'phone' =>'required',
+            'country_id' =>'required',
+            'city' =>'required',
+            'pincode' =>'required',
+            'address1' =>'required',
         ];
     }
 }

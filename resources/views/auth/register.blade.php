@@ -57,9 +57,13 @@
                             </div>
                             <div class="col-4">
                                 <label for="country" class="form-label mx-2">{{ __('country') }}</label>
-                                <input id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" value="{{ old('country') }}" required autofocus>
+<select id="country_id" type="text" class="form-control @error('country_id') is-invalid @enderror" name="country_id" value="{{ old('country_id') }}" required autofocus>
+    @foreach(\App\Models\Country::all() as $country)
+        <option value="{{$country->id}}">{{{$country->name}}}</option>
 
-                                @error('country')
+    @endforeach
+</select>
+                                @error('country_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
