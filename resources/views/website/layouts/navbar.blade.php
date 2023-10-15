@@ -9,20 +9,19 @@
                         <ul>
                             <li>
                                 @if ( Config::get('app.locale')  == 'ar')
+                                    <img src="{{asset('assets/img/flags/ar.jpg') }}" class="mx-2" alt="ar" style="max-width: 20px">
                                     {{ LaravelLocalization::getCurrentLocaleName() }}
-                                    <img src="{{asset('assets/img/flags/ar.jpg') }}" alt="ar" style="max-width: 20px"><i
-                                        class="fi-rs-angle-down"></i>
+                                    <i class="fi-rs-angle-down"></i>
                                 @else
+                                    <img src="{{asset('assets/img/flags/tr.jpg') }}" class="mx-2" alt="tr" style="max-width: 20px">
                                     {{ LaravelLocalization::getCurrentLocaleName() }}
-                                    <img src="{{asset('assets/img/flags/tr.jpg') }}" alt="tr" style="max-width: 20px"><i
-                                        class="fi-rs-angle-down"></i>
+                                    <i class="fi-rs-angle-down"></i>
                                 @endif
 
 
                                 <ul class="language-dropdown">
                                     <li>  @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                            <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
-                                               href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                            <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                                                 {{ $properties['native'] }}
                                             </a>
                                         @endforeach
@@ -36,11 +35,9 @@
                     <div class="text-center">
                         <div id="news-flash" class="d-inline-block">
                             <ul>
-                                <li>{{trans('website_navbar_trans.Get_fantastic_merchandise_at_up_to_50%_off')}} <a
-                                        href="#">{{trans('website_navbar_trans.View_details')}}</a></li>
+                                <li>{{trans('website_navbar_trans.Get_fantastic_merchandise_at_up_to_50%_off')}} <a href="#">{{trans('website_navbar_trans.View_details')}}</a></li>
                                 <li>{{trans('website_navbar_trans.Supper_Value_Deals_Save_more_with_coupons')}}</li>
-                                <li>{{trans('website_navbar_trans.Trendy_25silver_jewelry_save_up_35%_off_today')}}<a
-                                        href="#">{{trans('website_navbar_trans.Shop_now')}}</a></li>
+                                <li>{{trans('website_navbar_trans.Trendy_25silver_jewelry_save_up_35%_off_today')}}<a href="#">{{trans('website_navbar_trans.Shop_now')}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -67,76 +64,65 @@
                                     <div class="header-info">
                                         <ul>
                                             <li>
-                                                <a class="language-dropdown-active" href="#"><img
-                                                        src="{{asset('assets/imgs/logoutdoor.png')}}">
+                                                <a class="language-dropdown-active" href="#">
+                                                    <i class="bi bi-arrow-right-circle-fill fs-4"></i>
                                                 </a>
                                                 <ul class="language-dropdown">
-                                                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                                    <li><a href="{{ route('logout') }}" onclick=" event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                                                     </li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      class="d-none">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
                             @endguest
                         </ul>
                     </div>
                 </div>
-
-                </ul>
             </div>
         </div>
-    </div>
-    </div>
     </div>
     {{--    end_header-top--}}
 
     {{--    start_header-middle--}}
     <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
         <div class="container">
-            <div class="header-wrap">
+            <div class="d-flex align-items-center justify-content-between">
                 <div class="logo logo-width-1">
                     <a href="{{url('/')}}"><img src="{{asset('assets/imgs/logo/logo.png')}}" alt="logo"></a>
                 </div>
-
+                <div class="w-100 mx-5">
+                    <form action="#">
+                        <input type="text" placeholder="{{trans('website_navbar_trans.search')}}" class="form-control">
+                    </form>
+                </div>
                 <div class="header-right">
                     <div class="header-wrap">
-                        <div class="logo logo-width-1" style="margin-left: 300px ; margin-right: 200px">
-                            <form action="#">
-                                <input type="text" placeholder="{{trans('website_navbar_trans.search')}}">
-                            </form>
-                        </div>
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
-
-                            </div>
-
-
-
-
-                            <div class="header-action-icon-2">
-                                <a class="mini-cart-icon" href="#">
-                                    <img alt="Surfside Media" src="{{asset('assets/imgs/theme/icons/icon-cart.svg')}}">
-
+                                <a class="mini-cart-icon d-flex" href="#">
+                                    <img alt="Surfside Media" src="{{asset('assets/imgs/theme/icons/search.png')}}">
                                 </a>
-                                <div class="cart-dropdown-wrap cart-dropdown-hm2">
-
+                            </div>
+                            <div class="header-action-icon-2">
+                                <a class="mini-cart-icon d-flex" href="#">
+                                    <img alt="Surfside Media" src="{{asset('assets/imgs/theme/icons/icon-heart.svg')}}">
+                                </a>
+                            </div>
+                            <div class="header-action-icon-2">
+                                <a class="mini-cart-icon d-flex" href="#">
+                                    <img alt="Surfside Media" src="{{asset('assets/imgs/theme/icons/icon-cart.svg')}}">
+                                </a>
+                                <div class="cart-dropdown-wrap cart-dropdown-hm2" style="{{Config::get('app.locale') =='ar'?'left: 0; right: auto;':''}}">
                                     <div class="shopping-cart-footer">
-
-                                        <div class="shopping-cart-button">
+                                        <div class="shopping-cart-button">  
                                             <a href="{{route('cart.index')}}" class="outline">{{trans('website_navbar_trans.Viewcart')}}</a>
                                             <a href="#" class="outline" >{{trans('website_navbar_trans.Checkout')}}</a>
                                         </div>
                                     </div>
-
-
-
-
                                 </div>
                             </div>
                         </div>
@@ -148,63 +134,133 @@
     {{--    end_header-middle--}}
 
     {{--    start_header-bottom--}}
+
     <div class="header-bottom header-bottom-bg-color sticky-bar">
-        <div class="container">
+        <div class="container"> 
             <div class="header-wrap header-space-between position-relative">
+                {{-- الشعار --}}
                 <div class="logo logo-width-1 d-block d-lg-none">
                     <a href="{{url('/')}}"><img src="{{asset('assets/imgs/logo/logo.png')}}" alt="logo"></a>
                 </div>
-                <div class="header-nav d-none d-lg-flex">
-                    <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
+                
+                {{-- البحث --}}
+                <div class="w-100 mx-2 input-navbar-mobile">
+                    <form action="#">
+                        <input type="text" placeholder="{{trans('website_navbar_trans.search')}}" class="form-control h-100">
+                    </form>
+                </div>
+    
+                    {{-- القوائم المنسدلة لقياسات سطح المكتب --}}
+                <div class="header-nav d-none d-lg-flex w-100">
+                    <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block w-100">
                         <nav>
-                            <ul>
-                                <li><a class="{{$route='index_page' ? 'active' : ''}}"style="font-size: 20px" href="{{url('/')}}">{{trans('website_navbar_trans.home')}}</a>
+                            <ul class="d-flex justify-content-between">
+                                <li><a class="{{$route='index_page' ? 'active' : ''}}" href="{{url('/')}}">{{trans('website_navbar_trans.home')}}</a>
                                 </li>
-                                <li><a class="{{$route='categories_page'?'active':''}}"style="font-size: 20px" href="{{route('get_categories')}}">{{trans('website_navbar_trans.shop')}}</a>
-                                </li>
-
-
-                                    @auth()
-
-                                        @if (Auth::user()->is_admin == 1)
-                                        <li><a style="font-size: 20px" href="#">{{trans('website_navbar_trans.My_Account')}}<i
-                                                    class="fi-rs-angle-down"></i></a>
+    
+                                @auth()
+    
+                                    @if (Auth::user()->is_admin == 1)
+                                        <li><a href="#"> {{trans('website_navbar_trans.My_Account')}} <i class="fi-rs-angle-down"></i></a>
                                             <ul class="sub-menu">
                                                 <li>
-                                                    <a style="font-size: 20px" href="{{route('dashboard')}}">{{trans('website_navbar_trans.dashboard')}}</a>
+                                                    <a href="{{route('dashboard')}}">{{trans('website_navbar_trans.dashboard')}}</a>
                                                 </li>
                                                 <li>
-                                                    <a style="font-size: 20px" href="{{route('products.index')}}">{{trans('website_navbar_trans.Products')}}</a>
+                                                    <a href="{{route('products.index')}}">{{trans('website_navbar_trans.Products')}}</a>
                                                 </li>
                                                 <li>
-                                                    <a style="font-size: 20px" href="{{route('categories.index')}}">{{trans('website_navbar_trans.Categories')}}</a>
+                                                    <a href="{{route('categories.index')}}">{{trans('website_navbar_trans.Categories')}}</a>
                                                 </li>
                                             </ul>
-                                        @else
+                                        </li>
+                                    @else
 
-                                        @endif
                                     @endif
+                                @endif
+                                <li ><a href="#"> {{trans('website_navbar_trans.ELBISE')}} <i class="fi-rs-angle-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <center>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/SPOR-ELBISI')}}">{{trans('website_navbar_trans.SPORELBISI')}}</a></li>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/G%C3%9CNL%C3%9CK-ELBISI')}}">{{trans('website_navbar_trans.GÜNLÜKELBISI')}}</a></li>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/ABIYE-ELBISI')}}">{{trans('website_navbar_trans.ABIYEELBISI')}}</a></li>
+                                        </center>
+                                    </ul>
                                 </li>
-                                <li><a  class="{{$route=='about_page' ? 'active' : ''}}" style="font-size: 20px" href="{{route('about')}}">{{trans('website_navbar_trans.About')}}</a></li>
-                                <li><a class="{{$route=='contact_page' ? 'active' : ''}}" style="font-size: 20px" href="{{route('contact')}}">{{trans('website_navbar_trans.contact')}}</a></li>
+                                <li ><a href="#"> {{trans('website_navbar_trans.PAJAM&IÇGIYIM')}} <i class="fi-rs-angle-down"></i></a>
+                                    <ul  class="sub-menu">
+                                        <center>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/BLUZ')}}">{{trans('website_navbar_trans.BLUZ')}}</a></li>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/T-SHIRT')}}">{{trans('website_navbar_trans.T-SHIRT')}}</a></li>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/S%C3%9CVETER')}}">{{trans('website_navbar_trans.SÜVETER')}}</a></li>
+                                        </center>
+                                    </ul>
+                                </li>
+                                <li ><a href="#"> {{trans('website_navbar_trans.DIŞGIYIM')}} <i class="fi-rs-angle-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <center>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/TRENÇ&KAP')}}">{{trans('website_navbar_trans.TRENÇ&KAP')}}</a></li>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/FERACE&PARDÖSÜ')}}">{{trans('website_navbar_trans.FERACE&PARDÖSÜ')}}</a></li>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/HIRKA&YELEK')}}">{{trans('website_navbar_trans.HIRKA&YELEK')}}</a></li>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/TESSET%C3%9CR-CEKET')}}">{{trans('website_navbar_trans.TESSETÜRCEKET')}}</a></li>
+                                        </center>
+                                    </ul>
+                                </li>
+                                <li ><a href="#"> {{trans('website_navbar_trans.AITGIYIM')}} <i class="fi-rs-angle-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <center>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/PANTOLON')}}">{{trans('website_navbar_trans.PANTOLON')}}</a></li>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/KOT-PANTOLON')}}">{{trans('website_navbar_trans.KOTPANTOLON')}}</a></li>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/KLASIK-PANTOLON')}}">{{trans('website_navbar_trans.KLASIKPANTOLON')}}</a></li>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/SPOR-PANTOLON')}}">{{trans('website_navbar_trans.SPORPANTOLON')}}</a></li>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/ETEK')}}">{{trans('website_navbar_trans.ETEK')}}</a></li>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/TAYT')}}">{{trans('website_navbar_trans.TAYT')}}</a></li>
+                                        </center> 
+                                    </ul>
+                                </li>
+                                <li ><a href="#"> {{trans('website_navbar_trans.ÇANTA')}} <i class="fi-rs-angle-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <center>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/GÜNLÜK-ÇANTA')}}">{{trans('website_navbar_trans.GÜNLÜKÇANTA')}}</a></li>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/SIRT%20%C3%87ANTA')}}">{{trans('website_navbar_trans.SIRTÇANTA')}}</a></li>
+                                        </center>
+                                    </ul>
+                                </li>
+                                <li ><a href="#"> {{trans('website_navbar_trans.EŞARP')}} <i class="fi-rs-angle-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <center>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/KA%C5%9EE-%C5%9EAL')}}">{{trans('website_navbar_trans.KAŞEŞAL')}}</a></li>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/ÇORAP')}}">{{trans('website_navbar_trans.ÇORAP')}}</a></li>
+                                        </center>
+                                    </ul>
+                                </li>
+                                <li ><a href="#"> {{trans('website_navbar_trans.PIJAMA')}} <i class="fi-rs-angle-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <center>
+                                            <h5>{{trans('website_navbar_trans.ERKEK')}}</h5>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/E%C5%9EOFMAN-ERKEK')}}">{{trans('website_navbar_trans.EŞOFMAN')}}</a></li>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/%C5%9EARDON-PIJAMA-ERKEK')}}">{{trans('website_navbar_trans.ŞARDONPIJAMA')}}</a></li>
+    
+    
+                                            <h5>{{trans('website_navbar_trans.KADIN')}}</h5>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/E%C5%9EOFMAN-BAYANLAR')}}">{{trans('website_navbar_trans.EŞOFMAN')}}</a></li>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/%C5%9EARDON-PIJAMA-BAYANLAR')}}">{{trans('website_navbar_trans.ŞARDONPIJAMA')}}</a></li>
+    
+    
+                                            <h5>{{trans('website_navbar_trans.ÇOCUK')}}</h5>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/E%C5%9EOFMAN-PIJAMA-COCUK')}}">{{trans('website_navbar_trans.EŞOFMAN')}}</a></li>
+                                            <li><a href="{{url('https://balaton2.shop/ar/category/%C5%9EARDON-PIJAMA-COCUK')}}">{{trans('website_navbar_trans.ŞARDONPIJAMA')}}</a></li>
+    
+                                        </center>
+                                    </ul>
+                                </li>
+    
+    
+    
+                                <li><a   href="{{route('about')}}">{{trans('website_navbar_trans.About')}}</a></li>
+                                <li><a  class="{{$route=='contact_page' ? 'active' : ''}}" href="{{route('contact')}}">{{trans('website_navbar_trans.contact')}}</a></li>
                             </ul>
                         </nav>
-                    </div>
-                </div>
-                <div class="hotline d-none d-lg-block">
-                    <p>
-                        <i class="fi-rs-smartphone"></i><span>{{trans('website_navbar_trans.contact')}}</span> {{trans('website_navbar_trans.905318312199+')}}
-                    </p>
-                </div>
-                <div class="header-action-right d-block d-lg-none">
-                    <div class="header-action-2">
-                        <div class="header-action-icon-2 d-block d-lg-none">
-                            <div class="burger-icon burger-icon-white">
-                                <span class="burger-icon-top"></span>
-                                <span class="burger-icon-mid"></span>
-                                <span class="burger-icon-bottom"></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -213,142 +269,3 @@
 </header>
 {{--    end_header-bottom--}}
 
-
-{{--start_mobile-header--}}
-<div class="mobile-header-active mobile-header-wrapper-style">
-    <div class="mobile-header-wrapper-inner">
-        <div class="mobile-header-top">
-            <div class="mobile-header-logo">
-                <a href="{{url('/')}}"><img src="{{asset('assets/imgs/logo/logo.png')}}" alt="logo"></a>
-            </div>
-            <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
-                <button class="close-style search-close">
-                    <i class="icon-top"></i>
-                    <i class="icon-bottom"></i>
-                </button>
-            </div>
-        </div>
-        <div class="mobile-header-content-area">
-            <div class="mobile-search search-style-3 mobile-header-border">
-                <form action="#">
-                    <input type="text" placeholder="{{trans('website_navbar_trans.search')}}">
-                    <button type="submit"><i class="fi-rs-search"></i></button>
-                </form>
-            </div>
-            {{--end_mobile-header--}}
-
-            <!-- mobile menu start -->
-            <div class="mobile-menu-wrap mobile-header-border">
-                <nav>
-                    <ul class="mobile-menu">
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a
-                                style="font-size: 20px"  href="{{url('/')}}">{{trans('website_navbar_trans.home')}}</a></li>
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a
-                                style="font-size: 20px"  href="{{route('get_categories')}}">{{trans('website_navbar_trans.shop')}}</a>
-                        </li>
-
-                            @auth()
-
-                                @if (Auth::user()->is_admin == 1)
-                                <li class="menu-item-has-children"><span class="menu-expand"></span><a
-                                        style="font-size: 20px"   href="#">{{trans('website_navbar_trans.My_Account')}}</a>
-                                    <ul class="dropdown">
-                                        <li>
-                                            <a style="font-size: 20px" href="{{route('dashboard')}}">{{trans('website_navbar_trans.dashboard')}}</a>
-                                        </li>
-                                        <li>
-                                            <a style="font-size: 20px"href="{{route('products.index')}}">{{trans('website_navbar_trans.Products')}}</a>
-                                        </li>
-                                        <li>
-                                            <a style="font-size: 20px" href="{{route('categories.index')}}">{{trans('website_navbar_trans.Categories')}}</a>
-                                        </li>
-                                    </ul>
-                                @else
-
-                                @endif
-                            @endif
-                        </li>
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a
-                                style="font-size: 20px" href="#">{{trans('website_navbar_trans.About')}}</a>
-                        </li>
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a
-                                style="font-size: 20px" href="#">{{trans('website_navbar_trans.contact')}}</a></li>
-
-
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">
-
-
-                                @if ( Config::get('app.locale')  == 'ar')
-                                    {{ LaravelLocalization::getCurrentLocaleName() }}
-                                    <img src="{{asset('assets/img/flags/ar.jpg') }}" alt="ar" style="max-width: 20px">
-                                @else
-                                    {{ LaravelLocalization::getCurrentLocaleName() }}
-                                    <img src="{{asset('assets/img/flags/tr.jpg') }}" alt="tr" style="max-width: 20px">
-                                @endif
-                            </a>
-
-                            <ul class="dropdown">
-                                <li>  @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                        <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
-                                           href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                            {{ $properties['native'] }}
-                                        </a>
-                                    @endforeach
-                                </li>
-                            </ul>
-                    </ul>
-                </nav>
-            </div>
-            <div class="mobile-header-info-wrap mobile-header-border">
-                <ul>
-                    @guest
-                        @if (Route::has('login'))
-                            <li>
-
-
-                                <a href="{{ route('login') }}">{{trans('website_navbar_trans.Log_In')}} </a>
-                            </li>
-                        @endif
-                        @if (Route::has('register'))
-                            <li>
-
-                                <a href="{{ route('register') }}">{{trans('website_navbar_trans.Sign_Up')}}</a>
-                            </li>
-                        @endif
-                    @else
-                        <div class="col-xl-3 col-lg-4">
-                            <div class="header-info">
-                                <ul>
-                                    <li>
-                                        <a class="language-dropdown-active" href="#"><img
-                                                src="{{asset('assets/imgs/logoutdoor.png')}}" style="width: 40px; ">
-                                        </a>
-                                        <ul class="language-dropdown">
-                                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                              class="d-none">
-                            @csrf
-                        </form>
-                    @endguest
-                </ul>
-                <div class="single-mobile-header-info">
-                    <a href="#">{{trans('website_navbar_trans.905318312199+')}} </a>
-                </div>
-            </div>
-            <div class="mobile-social-icon">
-                <a href="https://www.facebook.com/balaton2?mibextid=ZbWKwL"><img src="{{asset('assets/imgs/theme/icons/icon-facebook.svg')}}" alt=""></a>
-                <a href="https://instagram.com/bala.ton2020?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D"><img src="{{asset('assets/imgs/theme/icons/icon-instagram.svg')}}" alt=""></a>
-
-            </div>
-        </div>
-    </div>
-</div>
-<!-- mobile menu end -->

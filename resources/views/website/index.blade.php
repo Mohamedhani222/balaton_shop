@@ -9,7 +9,7 @@
     <br>
     <div class="container">
         @include('website.index_main.slider')
-        @include('website.index_main.Site_services')
+        {{-- @include('website.index_main.Site_services') --}}
         @include('website.index_main.trend_product')
         <br>
         @include('website.index_main.trend_category')

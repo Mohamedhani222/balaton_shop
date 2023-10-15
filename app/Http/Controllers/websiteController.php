@@ -56,6 +56,9 @@ class websiteController extends Controller
         $data['route']='about_page';
         return view('website.about',$data);
     }
+        public function categori(){
+        return view('website.categori');
+    }
 
 
 

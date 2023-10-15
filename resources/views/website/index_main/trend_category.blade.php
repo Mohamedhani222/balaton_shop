@@ -2,8 +2,7 @@
     <h3 style="text-align: center"><span
             style="color: #fa0000 ;text-align: center">{{trans('website_index_trans.category')}}</span> {{trans('website_index_trans.trend')}}
     </h3>
-    <br><br>
-    <div class="owl-carousel trend_product owl-theme">
+    <div class="owl-carousel trend_product owl-theme my-4">
         @foreach($categories as $Category)
 
             <a href="{{route('get_category_slug',$Category->slug)}}">
@@ -32,9 +31,6 @@
 
         @endforeach
     </div>
-
-    <br>
-    <br>
 
 
 </div>

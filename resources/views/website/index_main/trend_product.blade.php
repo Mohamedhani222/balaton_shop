@@ -1,4 +1,4 @@
-<div class="container" style="text-align: center">
+<div class="container my-5" style="text-align: center">
 <h3 style="text-align: center"><span style=" color: #fa0000 ; text-align: center">{{trans('website_index_trans.product')}}</span> {{trans('website_index_trans.trend')}}</h3>
 <br>
 <br>

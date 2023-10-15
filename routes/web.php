@@ -37,6 +37,7 @@ Route::group(
 
     Route::get('/about', [websiteController::class, 'about'])->name('about');
     Route::get('/contact', [websiteController::class, 'contact'])->name('contact');
+    Route::get('/categori', [websiteController::class, 'categori'])->name('categori');
     Route::post('/send-massage', [websiteController::class, 'sendEmail'])->name('contact.send');
     Route::get('/', [websiteController::class, 'index'])->name('index');
     Route::get('/categories', [websiteController::class, 'getCategories'])->name('get_categories');

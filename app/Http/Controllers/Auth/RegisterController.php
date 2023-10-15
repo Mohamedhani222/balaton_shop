@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterRequest;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Mockery\Exception;
+use function Symfony\Component\Translation\t;
 
 class RegisterController extends Controller
 {
@@ -41,32 +46,23 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+
+
+    public function register(RegisterRequest $request)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        try {
+            $user = User::create([
+                'name' => $request->fname . $request->lname,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+            Auth::login($user);
+            toastr()->success('Created Successfully !');
+            return redirect($this->redirectTo);
+        } catch (\Exception  $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 
-
-    protected function create(array $data)
-    {
-
-        return User::create([
-            'name' =>$data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-
-
-    }
 }
 
