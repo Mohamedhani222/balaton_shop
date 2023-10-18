@@ -49,12 +49,13 @@ Route::group(
         'middleware' => ['auth']
     ], function () {
 
-        Route::resource('cart', CartController::class);
         Route::resource('checkout', CheckoutController::class);
         Route::get('/complete-information', [UserProfileController::class, 'create'])->name('complete-info');
         Route::post('/complete-information', [UserProfileController::class, 'store'])->name('submit-info');
         Route::post('/confirm-order/{id}', [\App\Http\Controllers\OrderController::class, 'make_order_paid'])->name('confirm-order');
     });
+    Route::resource('cart', CartController::class);
+    Route::resource('wishlist', \App\Http\Controllers\WishListController::class);
 
 });
 

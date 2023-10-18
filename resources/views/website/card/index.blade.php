@@ -6,7 +6,7 @@
 @section('content')
 <div class="container">
     <div class="my-5">
-        
+
         <div class="table-responsive">
             <table class="table text-center">
                 <thead>
@@ -20,19 +20,20 @@
                 </tr>
                 </thead>
                 <tbody>
+                @if(auth()->check())
                 @forelse($cartItems as $item)
                     <tr>
                         <td >
-                            <!--<img src="{{Storage::url($item->image)}}" alt="#">-->
+{{--                            <img src="{{Storage::url($item->image)}}" alt="#">--}}
                             <div class="flex-shrink-0">
                                 <img src="{{asset($item->image)}}" alt="" width="35" class="img-fluid">
                             </div>
-                            
+
                         </td>
-                        
-                        
-                        
-                        
+
+
+
+
                         <td class="product-des product-name"><h5 class="product-name">{{ $item->name}}</h5></td>
                         <td class="text-center" data-title="Stock"><h5
                                 class="qty-val">{{$item->pivot->quantity}}</h5></td>
@@ -51,14 +52,51 @@
                 @empty
                     <td colspan="5">لا يوجد منتجات في الكارت </td>
                 @endforelse
+
+                @else
+{{--                    @if(!$cartItems)--}}
+{{--                        <td colspan="5">لا يوجد منتجات في الكارت </td>--}}
+{{--                    @else--}}
+
+                    @foreach($cartItems as $item)
+                        <tr>
+                        <td >
+                            {{--                            <img src="{{Storage::url($item->image)}}" alt="#">--}}
+                            <div class="flex-shrink-0">
+                                <img src="{{asset($item['product']['image'])}}" alt="" width="35" class="img-fluid">
+                            </div>
+
+                        </td>
+
+
+                        <td class="product-des product-name"><h5 class="product-name">{{ $item['product']['name']}}</h5></td>
+                        <td class="text-center" data-title="Stock"><h5
+                                class="qty-val">{{$item['qty']}}</h5></td>
+                        <td class="action" data-title="Remove">{{$item['qty'] * $item['product']['price']}}</td>
+                        <td class="action" data-title="Remove" style="color: red">
+                            <form action="{{route('cart.destroy' ,$item['product']['id'])}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-balaton" type="submit">
+                                    <ion-icon name="trash-outline"></ion-icon>
+                                </button>
+                            </form>
+
+                        </td>
+                    </tr>
+                    @endforeach
+                @endif
+
+{{--                @endif--}}
+
                 </tbody>
             </table>
         </div>
         <div class="row">
             <div class="col-md-4">
-                <div class="my-4 p-3 border rounded"> 
+                <div class="my-4 p-3 border rounded">
                     <div class="row">
-                        @if($cart)
+                        @if(isset($cart))
                             <div class="col-6">{{trans('website_navbar_trans.total')}}</div>
                             <div class="col-6" style="direction: ltr">{{$cart->total_price}}TL </div>
                             <div class="col-6">{{trans('website_navbar_trans.delivery')}} </div>
@@ -77,8 +115,9 @@
             <div class="col-md-8">
                 <div class="d-flex justify-content-around my-5">
                     <a href="/" class="btn btn-balaton "><i class="fi-rs-shopping-bag mx-1"></i>{{trans('category_trans.continue')}}</a>
-                    <!--<a href="{{route('checkout.index')}}" class="btn btn-balaton">{{trans('website_navbar_trans.Checkout')}}</a>-->
-                    @if(!Auth::user()->address)
+{{--                    <!--<a href="{{route('checkout.index')}}" class="btn btn-balaton">{{trans('website_navbar_trans.Checkout')}}</a>-->--}}
+
+                    @if(!Auth::user()?->address)
                         <a href="{{route('checkout.index')}}" class="btn btn-balaton">{{trans('website_navbar_trans.Checkout')}}</a>
                     @endif
                 </div>

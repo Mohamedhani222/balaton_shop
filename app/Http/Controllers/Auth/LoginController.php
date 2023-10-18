@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\OrderItem;
+use App\Models\product;
 use App\Providers\RouteServiceProvider;
+use App\Services\SessionCart;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class LoginController extends Controller
@@ -15,24 +19,17 @@ class LoginController extends Controller
 
 
 //    protected $redirectTo = RouteServiceProvider::HOME;
+    public
+    function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
 
     public function authenticated()
     {
-        if (Auth::user()->is_admin == 1) {
-
-            return redirect()->route('index') ->with('success','login successfully');
-
-        }
-        if (Auth::user()->is_admin == 0) {
-
-            return redirect()->route('index') ->with('success','login successfully');
-
-        }
-    }
+        (new SessionCart())->addToCartAfterLogin();
+        return redirect()->route('index')->with('success', 'login successfully');
 
 
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
     }
 }
