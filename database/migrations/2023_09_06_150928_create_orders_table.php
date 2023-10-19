@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->enum(
                 'status',
                 ['IN_CART', 'PENDING', 'SUCCESS', 'FAILED','WISHLIST']
-            )->default('IN_CART');
+            );
             $table->enum('delivery_status', ['PENDING', 'ON_THE_WAY','DELIVERED'])->nullable();
             $table->boolean('is_paid')->default(false);
             $table->string('payment_method')->nullable();

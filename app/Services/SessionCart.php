@@ -43,7 +43,7 @@ class SessionCart
                     'unit_price' => $product->price,
                     'total_price' => DB::raw('total_price + ' . ($item['qty'] * $product->price)), // Update total_price
                 ]);
-                $totalPrice = $items->sum('total_price');
+                $totalPrice = OrderItem::where('order_id',$order->id)->sum('total_price');
                 $order->total_price = $totalPrice;
                 $order->save();
             }

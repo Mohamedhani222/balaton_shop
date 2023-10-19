@@ -27,10 +27,10 @@ class WishListController extends Controller
 
             $wishlistItems = $wishlist ? $wishlist->products()->get() : [];
 
-            return view('website.card.index', compact('wishlist', 'wishlistItems'));
+            return view('website.wishlist.index', compact('wishlist', 'wishlistItems'));
         }
         $cartItems = session('cart');
-        return view('website.card.index', compact('cartItems'));
+        return view('website.wishlist.index', compact('cartItems'));
 
 //        return \session('cart');
     }
@@ -46,7 +46,7 @@ class WishListController extends Controller
                 return session('wishlist');
             } else {
                 $user = Auth::user();
-                $order = $user->orders()->Status('WISHLIST')->firstOrCreate((['user_id' => $user->id]));
+                $order = $user->orders()->firstOrCreate((['user_id' => $user->id,'status'=> 'WISHLIST']));
                 $order->total_price =null;
                 $order->save();
                 OrderItem::updateOrInsert(
@@ -58,7 +58,7 @@ class WishListController extends Controller
                 );
             }
             DB::commit();
-            return response()->json('added successfully');
+            return $order;
         } catch (\Exception $e) {
             DB::rollBack();
             return $e->getMessage();

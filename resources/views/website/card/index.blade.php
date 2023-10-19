@@ -39,9 +39,11 @@
                                 class="qty-val">{{$item->pivot->quantity}}</h5></td>
                         <td class="action" data-title="Remove">{{$item->pivot->total_price}}</td>
                         <td class="action" data-title="Remove" style="color: red">
-                            <form action="{{route('cart.destroy' ,$item->pivot->id)}}" method="post">
+
+                            <form action="{{route('cart.destroy' ,'test')}}" method="post">
                                 @csrf
                                 @method('DELETE')
+                                <input type="hidden" name="item_id" value="{{$item->pivot->id}}">
                                 <button class="btn btn-balaton" type="submit">
                                     <ion-icon name="trash-outline"></ion-icon>
                                 </button>
@@ -52,6 +54,8 @@
                 @empty
                     <td colspan="5">لا يوجد منتجات في الكارت </td>
                 @endforelse
+
+
 
                 @else
 {{--                    @if(!$cartItems)--}}

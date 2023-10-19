@@ -103,12 +103,12 @@
                     <div class="header-wrap">
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
-                                <a class="mini-cart-icon d-flex" href="#">
+                                <a class="mini-cart-icon d-flex" href="">
                                     <img alt="Surfside Media" src="{{asset('assets/imgs/theme/icons/search.png')}}">
                                 </a>
                             </div>
                             <div class="header-action-icon-2">
-                                <a class="mini-cart-icon d-flex" href="#">
+                                <a class="mini-cart-icon d-flex" href="{{route('wishlist.index')}}">
                                     <img alt="Surfside Media" src="{{asset('assets/imgs/theme/icons/icon-heart.svg')}}">
                                 </a>
                             </div>
@@ -118,7 +118,7 @@
                                 </a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2" style="{{Config::get('app.locale') =='ar'?'left: 0; right: auto;':''}}">
                                     <div class="shopping-cart-footer">
-                                        <div class="shopping-cart-button">  
+                                        <div class="shopping-cart-button">
                                             <a href="{{route('cart.index')}}" class="outline">{{trans('website_navbar_trans.Viewcart')}}</a>
                                             <a href="#" class="outline" >{{trans('website_navbar_trans.Checkout')}}</a>
                                         </div>
@@ -136,20 +136,20 @@
     {{--    start_header-bottom--}}
 
     <div class="header-bottom header-bottom-bg-color sticky-bar">
-        <div class="container"> 
+        <div class="container">
             <div class="header-wrap header-space-between position-relative">
                 {{-- الشعار --}}
                 <div class="logo logo-width-1 d-block d-lg-none">
                     <a href="{{url('/')}}"><img src="{{asset('assets/imgs/logo/logo.png')}}" alt="logo"></a>
                 </div>
-                
+
                 {{-- البحث --}}
                 <div class="w-100 mx-2 input-navbar-mobile">
                     <form action="#">
                         <input type="text" placeholder="{{trans('website_navbar_trans.search')}}" class="form-control h-100">
                     </form>
                 </div>
-    
+
                     {{-- القوائم المنسدلة لقياسات سطح المكتب --}}
                 <div class="header-nav d-none d-lg-flex w-100">
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block w-100">
@@ -157,9 +157,9 @@
                             <ul class="d-flex justify-content-between">
                                 <li><a class="{{$route='index_page' ? 'active' : ''}}" href="{{url('/')}}">{{trans('website_navbar_trans.home')}}</a>
                                 </li>
-    
+
                                 @auth()
-    
+
                                     @if (Auth::user()->is_admin == 1)
                                         <li><a href="#"> {{trans('website_navbar_trans.My_Account')}} <i class="fi-rs-angle-down"></i></a>
                                             <ul class="sub-menu">
@@ -215,7 +215,7 @@
                                             <li><a href="{{url('https://balaton2.shop/ar/category/SPOR-PANTOLON')}}">{{trans('website_navbar_trans.SPORPANTOLON')}}</a></li>
                                             <li><a href="{{url('https://balaton2.shop/ar/category/ETEK')}}">{{trans('website_navbar_trans.ETEK')}}</a></li>
                                             <li><a href="{{url('https://balaton2.shop/ar/category/TAYT')}}">{{trans('website_navbar_trans.TAYT')}}</a></li>
-                                        </center> 
+                                        </center>
                                     </ul>
                                 </li>
                                 <li ><a href="#"> {{trans('website_navbar_trans.ÇANTA')}} <i class="fi-rs-angle-down"></i></a>
@@ -240,23 +240,23 @@
                                             <h5>{{trans('website_navbar_trans.ERKEK')}}</h5>
                                             <li><a href="{{url('https://balaton2.shop/ar/category/E%C5%9EOFMAN-ERKEK')}}">{{trans('website_navbar_trans.EŞOFMAN')}}</a></li>
                                             <li><a href="{{url('https://balaton2.shop/ar/category/%C5%9EARDON-PIJAMA-ERKEK')}}">{{trans('website_navbar_trans.ŞARDONPIJAMA')}}</a></li>
-    
-    
+
+
                                             <h5>{{trans('website_navbar_trans.KADIN')}}</h5>
                                             <li><a href="{{url('https://balaton2.shop/ar/category/E%C5%9EOFMAN-BAYANLAR')}}">{{trans('website_navbar_trans.EŞOFMAN')}}</a></li>
                                             <li><a href="{{url('https://balaton2.shop/ar/category/%C5%9EARDON-PIJAMA-BAYANLAR')}}">{{trans('website_navbar_trans.ŞARDONPIJAMA')}}</a></li>
-    
-    
+
+
                                             <h5>{{trans('website_navbar_trans.ÇOCUK')}}</h5>
                                             <li><a href="{{url('https://balaton2.shop/ar/category/E%C5%9EOFMAN-PIJAMA-COCUK')}}">{{trans('website_navbar_trans.EŞOFMAN')}}</a></li>
                                             <li><a href="{{url('https://balaton2.shop/ar/category/%C5%9EARDON-PIJAMA-COCUK')}}">{{trans('website_navbar_trans.ŞARDONPIJAMA')}}</a></li>
-    
+
                                         </center>
                                     </ul>
                                 </li>
-    
-    
-    
+
+
+
                                 <li><a   href="{{route('about')}}">{{trans('website_navbar_trans.About')}}</a></li>
                                 <li><a  class="{{$route=='contact_page' ? 'active' : ''}}" href="{{route('contact')}}">{{trans('website_navbar_trans.contact')}}</a></li>
                             </ul>

@@ -68,16 +68,16 @@ class CartController extends Controller
 
     }
 
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request)
     {
         DB::beginTransaction();
         try {
             if (!auth()->check()) {
-                $this->sessionCart->destroy($id);
+                $this->sessionCart->destroy($request->item_id);
             } else {
                 $user = Auth::user();
                 $order_item = OrderItem::where([
-                    'id' => $id,
+                    'id' => $request->item_id,
                     'order_id' => $user->orders()->Status('IN_CART')->pluck('id'),
                 ])->firstorFail();
 
@@ -97,6 +97,7 @@ class CartController extends Controller
             flash($e->getMessage(), 'error');
             return redirect()->route('cart.index');
         }
+
     }
 
 
