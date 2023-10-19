@@ -46,13 +46,25 @@ class User extends Authenticatable
     ];
 
 
-    public function orders() :HasMany
+    public function orders(): HasMany
     {
-        return $this->hasMany(Order::class ,'user_id');
+        return $this->hasMany(Order::class, 'user_id');
     }
 
-    public function address() :HasOne
+    public function address(): HasOne
     {
-        return $this->hasOne(ShippingAddress::class ,'user_id');
+        return $this->hasOne(ShippingAddress::class, 'user_id');
+    }
+
+    public function getCartCountAttribute()
+    {
+            return Order::where(['user_id' => $this->id, 'status' => 'IN_CART'])->withCount('items')->first()->items_count;
+
+    }
+
+    public function getWishListCountAttribute()
+    {
+            return Order::where(['user_id' => $this->id, 'status' => 'WISHLIST'])->withCount('items')->first()->items_count;
+
     }
 }

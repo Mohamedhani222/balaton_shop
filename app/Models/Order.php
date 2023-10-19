@@ -32,6 +32,10 @@ class Order extends Model
         $query->where('status', $type);
     }
 
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class ,'order_id');
+    }
     public function user_order()
     {
         return $this->belongsTo(User::class, 'user_id');

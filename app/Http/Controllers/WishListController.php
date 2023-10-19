@@ -29,9 +29,8 @@ class WishListController extends Controller
 
             return view('website.wishlist.index', compact('wishlist', 'wishlistItems'));
         }
-        $cartItems = session('cart');
-        return view('website.wishlist.index', compact('cartItems'));
-
+        $wishlistItems = session('wishlist');
+        return view('website.wishlist.index', compact('wishlistItems'));
 //        return \session('cart');
     }
 

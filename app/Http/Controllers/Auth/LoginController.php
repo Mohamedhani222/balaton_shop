@@ -28,6 +28,7 @@ class LoginController extends Controller
     public function authenticated()
     {
         (new SessionCart())->addToCartAfterLogin();
+        (new SessionCart())->addToWishListAfterLogin();
         return redirect()->route('index')->with('success', 'login successfully');
 
 

@@ -4,27 +4,36 @@
     <button class="action-btn" data-mobile-menu-open-btn="" id="sidebarOpen">
       <ion-icon name="menu-outline" role="img" class="md hydrated" aria-label="menu outline"></ion-icon>
     </button>
-    
+
     <a href="{{route('cart.index')}}" class="action-btn">
       <ion-icon name="bag-handle-outline" role="img" class="md hydrated" aria-label="bag handle outline"></ion-icon>
-    
-      <span class="count">0</span>
+@if(auth()->check())
+      <span class="count">{{auth()->user()->CartCount }}</span>
+        @else
+            <span class="count">{{session()->has('cart') ? count(session('cart')) : 0}}</span>
+
+        @endif
     </a>
-    
+
     <a href="/" class="action-btn">
       <ion-icon name="home-outline" role="img" class="md hydrated" aria-label="home outline"></ion-icon>
     </a>
-    
-    <a href="#" class="action-btn">
+
+    <a href="{{route('wishlist.index')}}" class="action-btn">
       <ion-icon name="heart-outline" role="img" class="md hydrated" aria-label="heart outline"></ion-icon>
-    
-      <span class="count">0</span>
+        @if(auth()->check())
+            <span class="count">{{auth()->user()->WishListCount}}</span>
+        @else
+            <span class="count">{{session()->has('wishlist') ? count(session('wishlist')) : 0}}</span>
+
+        @endif
+
     </a>
-    
+
     <a href="{{route('categori')}}" class="action-btn" data-mobile-menu-open-btn="">
       <ion-icon name="grid-outline" role="img" class="md hydrated" aria-label="grid outline"></ion-icon>
     </a>
-    
+
 </div>
 
 <nav class="sidebar">
@@ -54,10 +63,10 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
-                @endguest            
+                @endguest
             </div>
             <div class="col-6">
-                <a href="{{route('cart.index')}}" class="btn btn-success w-100 text-white py-2"> 
+                <a href="{{route('cart.index')}}" class="btn btn-success w-100 text-white py-2">
                     <i class="bi bi-cart4 mx-1"></i>
                     {{trans('website_navbar_trans.sparislarim')}}
                 </a>
@@ -198,7 +207,7 @@
                             </div>
                             <ul class="dropdown my-2 mx-3">
                                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                    <li>  
+                                    <li>
                                         <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                                             {{ $properties['native'] }}
                                         </a>
@@ -222,9 +231,9 @@
 <script>
     const sidebar = document.querySelector(".sidebar");
     const sidebarOpen = document.querySelector("#sidebarOpen");
-    
+
     sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("open"));
-   
+
     document.addEventListener('DOMContentLoaded', function() {
         const menuItemsWithChildren = document.querySelectorAll('.menu-item-has-children');
 
