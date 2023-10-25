@@ -20,8 +20,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                @if(auth()->check())
-                @forelse($cartItems as $item)
+@auth
+    @forelse($cartItems as $item)
                     <tr>
                         <td >
 {{--                            <img src="{{Storage::url($item->image)}}" alt="#">--}}
@@ -55,13 +55,13 @@
                     <td colspan="5">لا يوجد منتجات في الكارت </td>
                 @endforelse
 
+@endauth
 
-
-                @else
 {{--                    @if(!$cartItems)--}}
 {{--                        <td colspan="5">لا يوجد منتجات في الكارت </td>--}}
 {{--                    @else--}}
-
+@guest
+    @if(isset($cartItems))
                     @foreach($cartItems as $item)
                         <tr>
                         <td >
@@ -89,8 +89,8 @@
                         </td>
                     </tr>
                     @endforeach
-                @endif
-
+    @endif
+@endguest
 {{--                @endif--}}
 
                 </tbody>
