@@ -58,13 +58,13 @@ class User extends Authenticatable
 
     public function getCartCountAttribute()
     {
-            return Order::where(['user_id' => $this->id, 'status' => 'IN_CART'])->withCount('items')->first()->items_count;
+            return Order::where(['user_id' => $this->id, 'status' => 'IN_CART'])->withCount('items')->first()?->items_count;
 
     }
 
     public function getWishListCountAttribute()
     {
-            return Order::where(['user_id' => $this->id, 'status' => 'WISHLIST'])->withCount('items')->first()->items_count;
+            return Order::where(['user_id' => $this->id, 'status' => 'WISHLIST'])->withCount('items')->first()?->items_count;
 
     }
 }
